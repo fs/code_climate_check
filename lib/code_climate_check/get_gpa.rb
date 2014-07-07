@@ -1,3 +1,6 @@
+require 'json'
+require 'net/http'
+
 module CodeClimateCheck
   class GetGpa < Base
     ENDPOINT = 'https://codeclimate.com/api/repos/%{repo}/branches/%{branch}'
