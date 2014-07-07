@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
+
+require 'code_climate_check'
+
+token = ARGV.shift
+repo = ARGV.shift
+branch = ARGV.shift
+
+if CodeClimateCheck::CompareGpa.new(token, repo).worse?(branch)
+  puts 'Code in your branch became worse'
+  exit(1)
+else
+  puts 'Code in your branch is good. Go on...'
+end
