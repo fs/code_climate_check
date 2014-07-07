@@ -1,3 +1,5 @@
+require 'code_climate_check/get_gpa'
+
 module CodeClimateCheck
   class CompareGpa < Base
     def diff(branch)
