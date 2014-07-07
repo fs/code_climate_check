@@ -1,4 +1,3 @@
-require 'pry'
 module CodeClimateCheck
   class GetGpa < Base
     ENDPOINT = 'https://codeclimate.com/api/repos/%{repo}/branches/%{branch}'
@@ -28,6 +27,7 @@ module CodeClimateCheck
       if response.is_a?(Net::HTTPSuccess)
         response.body
       else
+        puts 'HTTP request have been failed'
         null_response
       end
     end
