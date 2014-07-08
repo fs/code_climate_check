@@ -32,6 +32,7 @@ module CodeClimateCheck
       else
         puts 'HTTP request have been failed'
         null_response
+        exit(0)
       end
     end
 
@@ -42,7 +43,7 @@ module CodeClimateCheck
     end
 
     def null_response
-      {'last_snapshot' => {'gpa' => NULL_GPA}}.to_json
+      { last_snapshot: { gpa: NULL_GPA } }.to_json
     end
   end
 end
