@@ -1,6 +1,9 @@
 # CodeClimateCheck
 
-TODO: Write a gem description
+[![Build Status](https://travis-ci.org/ildarsafin/code_climate_check.svg?branch=master)](https://travis-ci.org/ildarsafin/code_climate_check)
+[![Coverage Status](https://coveralls.io/repos/ildarsafin/code_climate_check/badge.png?branch=master)](https://coveralls.io/r/ildarsafin/code_climate_check?branch=master)
+
+Gem that allows You to check your code quality with CodeClimate right from your console
 
 ## Installation
 
@@ -18,7 +21,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Just type in your console:
+
+    code_climate_check %your-codeclimate-token% %your-repo-id% %your-branch-name%
 
 ## Contributing
 
