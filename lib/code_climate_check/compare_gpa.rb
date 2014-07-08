@@ -1,7 +1,12 @@
 require 'code_climate_check/get_gpa'
 
 module CodeClimateCheck
-  class CompareGpa < Base
+  class CompareGpa
+
+    def initialize(token, repo)
+      @token, @repo = token, repo
+    end
+
     def diff(branch)
       branch_gpa(branch) - master_gpa
     end

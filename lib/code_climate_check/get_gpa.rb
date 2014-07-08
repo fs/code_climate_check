@@ -2,9 +2,13 @@ require 'json'
 require 'net/http'
 
 module CodeClimateCheck
-  class GetGpa < Base
+  class GetGpa
     ENDPOINT = 'https://codeclimate.com/api/repos/%{repo}/branches/%{branch}'
     NULL_GPA = 0
+
+    def initialize(token, repo)
+      @token, @repo = token, repo
+    end
 
     def gpa_for(branch)
       gpa(parse_json(fetch(branch)))
