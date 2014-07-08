@@ -5,7 +5,6 @@ Gem::Specification.new do |spec|
   spec.name          = "code_climate_check"
   spec.version       = CodeClimateCheck::VERSION
   spec.authors       = ["FlatStack team"]
-  spec.email         = ["ildar.safin@flatstack.com"]
   spec.summary       = %q{Simple gem for checking your code with CodeClimate}
   spec.description   = %q{ Gem that allows You to check your code quality with CodeClimate right from your terminal }
   spec.homepage      = ""
