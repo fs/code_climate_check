@@ -32,3 +32,12 @@ Just type in your console:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+## Credits
+
+CodeClimateCheck is maintained by [Timur Vafin](http://github.com/timurvafin) and [Ildar Safin](http://github.com/ildarsafin).
+It was written by [Flatstack](http://www.flatstack.com) with the help of our
+[contributors](http://github.com/fs/code_climate_check/contributors).
+
+
+[![Flatstack](http://www.flatstack.com/assets/images/logo.png)](http://www.flatstack.com)
