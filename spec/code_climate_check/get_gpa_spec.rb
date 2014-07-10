@@ -7,7 +7,7 @@ module CodeClimateCheck
     before do
       allow(Net::HTTP).to receive(:get_response)
       allow(Net::HTTP.get_response).to receive(:is_a?).and_return(true)
-      allow(Net::HTTP.get_response).to receive(:body).and_return( { last_snapshot: { gpa: 3 } }.to_json )
+      allow(Net::HTTP.get_response).to receive(:body).and_return({ last_snapshot: { gpa: 3 } }.to_json)
     end
 
     it 'should return correct gpa value' do
