@@ -11,7 +11,9 @@ module CodeClimateCheck
     end
 
     def gpa_for(branch)
-      gpa(parse_json(fetch(branch)))
+      response = get_http_response(branch)
+
+      gpa(parse_json(fetch(response)))
     end
 
     private
@@ -28,10 +30,8 @@ module CodeClimateCheck
       end
     end
 
-    def fetch(branch)
-      response = Net::HTTP.get_response(uri(branch))
-
-      if response.is_a?(Net::HTTPSuccess)
+    def fetch(response)
+      if response.is_a?(successful_response)
         response.body
       else
         puts 'HTTP request have been failed'
@@ -48,6 +48,14 @@ module CodeClimateCheck
 
     def null_response
       { last_snapshot: { gpa: NULL_GPA } }.to_json
+    end
+
+    def get_http_response(branch)
+      Net::HTTP.get_response(uri(branch))
+    end
+
+    def successful_response
+      Net::HTTPSuccess
     end
   end
 end
