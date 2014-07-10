@@ -4,7 +4,3 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'coveralls', require: false
-
-gem 'pry'
-gem 'guard'
-gem 'guard-rspec'
