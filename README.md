@@ -1,7 +1,7 @@
 # CodeClimateCheck
 
-[![Build Status](https://travis-ci.org/ildarsafin/code_climate_check.svg?branch=master)](https://travis-ci.org/ildarsafin/code_climate_check)
-[![Coverage Status](https://coveralls.io/repos/ildarsafin/code_climate_check/badge.png?branch=master)](https://coveralls.io/r/ildarsafin/code_climate_check?branch=master)
+[<img src="https://semaphoreapp.com/api/v1/projects/0df9c322-30ce-4385-b060-6ad8a4bf69bb/212505/badge.png">](https://semaphoreapp.com/fs/code_climate_check)
+[![Code Climate](https://codeclimate.com/github/fs/code_climate_check.png)](https://codeclimate.com/github/fs/code_climate_check)
 
 Gem that allows You to check your code quality with CodeClimate right from your console
 
