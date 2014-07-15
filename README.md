@@ -9,7 +9,7 @@ Gem that allows You to check your code quality with CodeClimate right from your 
 
 Add this line to your application's Gemfile:
 
-    gem 'code_climate_check'
+    $ gem 'code_climate_check'
 
 And then execute:
 
@@ -19,11 +19,24 @@ Or install it yourself as:
 
     $ gem install code_climate_check
 
+If you cloned this project use:
+
+    $ bin/bootstrap
+
 ## Usage
 
 Just type in your console:
 
     code_climate_check %your-codeclimate-token% %your-repo-id% %your-branch-name%
+
+## Quality tools
+
+* `bin/quality` based on [RuboCop](https://github.com/bbatsov/rubocop)
+* `.rubocop.yml` describes active checks
+
+## Develop
+
+`bin/build` checks your specs and runs quality tools
 
 ## Contributing
 
