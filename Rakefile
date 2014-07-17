@@ -3,9 +3,9 @@ require 'bundler/gem_tasks'
 
 Bundler.setup
 
-  require 'rake'
-  require 'rspec'
-  require 'rspec/core/rake_task'
+require 'rake'
+require 'rspec'
+require 'rspec/core/rake_task'
 
 $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
 require 'code_climate_check/version'
