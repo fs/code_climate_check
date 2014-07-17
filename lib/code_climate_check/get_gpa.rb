@@ -41,8 +41,8 @@ module CodeClimateCheck
     end
 
     def uri(branch)
-      URI(ENDPOINT % {repo: @repo, branch: branch}).tap do |uri|
-        uri.query = URI.encode_www_form({api_token: @token})
+      URI(ENDPOINT % { repo: @repo, branch: branch }).tap do |uri|
+        uri.query = URI.encode_www_form(api_token: @token)
       end
     end
 
