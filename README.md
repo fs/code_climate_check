@@ -1,4 +1,4 @@
-# CodeClimateCheck
+# Code Climate Ci
 
 [<img src="https://semaphoreapp.com/api/v1/projects/0df9c322-30ce-4385-b060-6ad8a4bf69bb/212505/badge.png">](https://semaphoreapp.com/fs/code_climate_check)
 [![Code Climate](https://codeclimate.com/github/fs/code_climate_check.png)](https://codeclimate.com/github/fs/code_climate_check)
@@ -9,7 +9,7 @@ Gem that allows You to check your code quality with CodeClimate right from your 
 
 Add this line to your application's Gemfile:
 
-    $ gem 'code_climate_check'
+    $ gem 'codeclimate_ci'
 
 And then execute:
 
@@ -17,7 +17,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install code_climate_check
+    $ gem install codeclimate_ci
 
 If you cloned this project use:
 
@@ -27,7 +27,7 @@ If you cloned this project use:
 
 Just type in your console:
 
-    code_climate_check %your-codeclimate-token% %your-repo-id% %your-branch-name%
+    $ codeclimate_ci --token=CODECLIMATE_API_TOKEN --repository=REPOSITORY_ID --branch=BRANCH
 
 ## Quality tools
 
@@ -40,7 +40,7 @@ Just type in your console:
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/code_climate_check/fork )
+1. Fork it ( https://github.com/[my-github-username]/codeclimate_ci/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
