@@ -1,16 +1,20 @@
-# encoding: utf-8
-require File.expand_path('../lib/code_climate_check/version', __FILE__)
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'codeclimate/cli/version'
+
 
 Gem::Specification.new do |spec|
-  spec.name          = 'code_climate_check'
-  spec.version       = CodeClimateCheck::VERSION
+  spec.name          = 'codeclimate-cli'
+  spec.version       = Codeclimate::Cli::VERSION
   spec.authors       = ['FlatStack team']
   spec.summary       = %q{Simple gem for checking your code with CodeClimate}
-  spec.description   = %q{ Gem that allows You to check your code quality with CodeClimate right from your terminal }
+  spec.description   = %q{Gem that allows You to check your code quality with CodeClimate right from your console}
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
-  spec.executables   = ['code_climate_check']
+  spec.executables   = ['codeclimate-cli']
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
