@@ -5,7 +5,7 @@ if ENV['CI']
 end
 
 require 'rspec'
-require 'code_climate_check'
+require 'codeclimate_cli'
 
 RSpec.configure do |config|
   config.filter_run focus: true

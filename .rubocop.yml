@@ -2,7 +2,7 @@ AllCops:
   RunRailsCops: false
   Excludes:
     - bin/**
-    - code_climate_check.gemspec
+    - codeclimate-cli.gemspec
 
 Documentation:
   Description: 'Document classes and non-namespace modules.'
