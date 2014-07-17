@@ -8,7 +8,7 @@ require 'rspec'
 require 'rspec/core/rake_task'
 
 $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
-require 'code_climate_check/version'
+require 'codeclimate-cli/version'
 
 # Default directory to look in is `/specs`
 # Run with `rake spec`

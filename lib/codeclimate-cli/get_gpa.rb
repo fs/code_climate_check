@@ -1,7 +1,7 @@
 require 'json'
 require 'net/http'
 
-module CodeClimateCheck
+module CodeclimateCli
   class GetGpa
     ENDPOINT = 'https://codeclimate.com/api/repos/%{repo}/branches/%{branch}'
     NULL_GPA = 0

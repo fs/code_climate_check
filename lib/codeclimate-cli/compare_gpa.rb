@@ -1,6 +1,6 @@
-require 'code_climate_check/get_gpa'
+require 'codeclimate-cli/get_gpa'
 
-module CodeClimateCheck
+module CodeclimateCli
   class CompareGpa
     def initialize(token, repo)
       @token, @repo = token, repo
