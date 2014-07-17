@@ -1,10 +1,11 @@
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "..", "lib"))
+# Run codeclimate-test-reporter only in CI
+if ENV['CI']
+  require 'codeclimate-test-reporter'
+  CodeClimate::TestReporter.start
+end
 
 require 'rspec'
 require 'code_climate_check'
-require 'coveralls'
-Coveralls.wear!
 
 RSpec.configure do |config|
   config.filter_run focus: true
