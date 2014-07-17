@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-module CodeClimateCheck
+module CodeclimateCi
   describe GetGpa do
-    let(:code_climate_check) { CodeClimateCheck::GetGpa.new('repo11', 'token1') }
+    let(:codeclimate_ci) { CodeclimateCi::GetGpa.new('repo11', 'token1') }
 
     before do
       allow(Net::HTTP).to receive(:get_response)
@@ -11,7 +11,7 @@ module CodeClimateCheck
     end
 
     it 'should return correct gpa value' do
-      expect(code_climate_check.gpa_for('master')).to eq 3
+      expect(codeclimate_ci.gpa_for('master')).to eq 3
     end
   end
 end
