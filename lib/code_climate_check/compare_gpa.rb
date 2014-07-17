@@ -2,7 +2,6 @@ require 'code_climate_check/get_gpa'
 
 module CodeClimateCheck
   class CompareGpa
-
     def initialize(token, repo)
       @token, @repo = token, repo
     end
