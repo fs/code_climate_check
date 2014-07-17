@@ -1,19 +1,19 @@
-require "bundler"
-require "bundler/gem_tasks"
+require 'bundler'
+require 'bundler/gem_tasks'
 
 Bundler.setup
 
-  require "rake"
-  require "rspec"
-  require "rspec/core/rake_task"
+  require 'rake'
+  require 'rspec'
+  require 'rspec/core/rake_task'
 
-$LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
-require "code_climate_check/version"
+$LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
+require 'code_climate_check/version'
 
 # Default directory to look in is `/specs`
 # Run with `rake spec`
 RSpec::Core::RakeTask.new(:spec) do |spec|
-  spec.pattern = "spec/**/*_spec.rb"
+  spec.pattern = 'spec/**/*_spec.rb'
 end
 
 task default: :spec
