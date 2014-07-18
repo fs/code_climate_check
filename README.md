@@ -1,7 +1,7 @@
 # Code Climate Ci
 
-[<img src="https://semaphoreapp.com/api/v1/projects/0df9c322-30ce-4385-b060-6ad8a4bf69bb/212505/badge.png">](https://semaphoreapp.com/fs/code_climate_check)
-[![Code Climate](https://codeclimate.com/github/fs/code_climate_check.png)](https://codeclimate.com/github/fs/code_climate_check)
+[<img src="https://semaphoreapp.com/api/v1/projects/67b7f0f3-e224-43a2-afd9-b24c5176e6dd/214701/badge.png">](https://semaphoreapp.com/fs/codeclimate_ci)
+[![Code Climate](https://codeclimate.com/github/fs/codeclimate_ci.png)](https://codeclimate.com/github/fs/codeclimate_ci)
 
 Gem that allows You to check your code quality with CodeClimate right from your console
 
@@ -50,7 +50,7 @@ Just type in your console:
 
 CodeClimateCheck is maintained by [Timur Vafin](http://github.com/timurvafin) and [Ildar Safin](http://github.com/ildarsafin).
 It was written by [Flatstack](http://www.flatstack.com) with the help of our
-[contributors](http://github.com/fs/code_climate_check/contributors).
+[contributors](http://github.com/fs/codeclimate_ci/contributors).
 
 
 [![Flatstack](http://www.flatstack.com/assets/images/logo.png)](http://www.flatstack.com)
