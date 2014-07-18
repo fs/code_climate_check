@@ -27,7 +27,7 @@ If you cloned this project use:
 
 Just type in your console:
 
-    $ codeclimate_ci --token=CODECLIMATE_API_TOKEN --repository=REPOSITORY_ID --branch=BRANCH
+    $ codeclimate_ci --codeclimate-api-token=CODECLIMATE_API_TOKEN --repo-id=REPOSITORY_ID --branch=BRANCH
 
 ## Quality tools
 
