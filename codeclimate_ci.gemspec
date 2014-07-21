@@ -27,4 +27,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'json', '~> 1.4'
   spec.add_dependency 'thor'
+  spec.add_dependency 'httparty'
 end
