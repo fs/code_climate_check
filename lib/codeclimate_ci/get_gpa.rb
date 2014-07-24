@@ -1,8 +1,5 @@
 module CodeclimateCi
   class GetGpa
-    ENDPOINT = 'https://codeclimate.com/api/repos/%{repo}/branches/%{branch}'
-    NULL_GPA = 0
-
     def initialize(codeclimate_api, branch)
       @codeclimate_api, @branch = codeclimate_api, branch
     end
