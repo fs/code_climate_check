@@ -6,6 +6,7 @@ end
 
 require 'rspec'
 require 'codeclimate_ci'
+require 'webmock/rspec'
 
 RSpec.configure do |config|
   config.filter_run focus: true
