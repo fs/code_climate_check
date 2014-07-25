@@ -21,7 +21,15 @@ module CodeclimateCi
     end
 
     def branch_gpa(branch_name)
-      gpa(branch_name).gpa
+      5.times do
+        if gpa(branch_name).analyzed?
+          return gpa(branch_name).gpa
+        else
+          CodeclimateCi::CLI.result_not_ready
+          sleep(2)
+          gpa(branch_name).refresh!
+        end
+      end
     end
 
     def api_requester

@@ -5,11 +5,15 @@ module CodeclimateCi
     end
 
     def analyzed?
-      branch_info.include?['last_snapshot']
+      branch_info.include?('last_snapshot')
     end
 
     def gpa
       branch_info['last_snapshot']['gpa'].to_f
+    end
+
+    def refresh!
+      @branch_info = nil
     end
 
     private

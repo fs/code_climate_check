@@ -19,6 +19,10 @@ module CodeclimateCi
       end
     end
 
+    def self.result_not_ready
+      puts 'Please wait. Code Climate is analyzing your branch.'
+    end
+
     default_task :check
 
     private
