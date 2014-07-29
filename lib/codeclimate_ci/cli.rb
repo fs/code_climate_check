@@ -12,15 +12,11 @@ module CodeclimateCi
       CodeclimateCi.configuration.load_from_options(options)
 
       if CodeclimateCi::CompareGpa.new(codeclimate_api_token, repo_id).worse?(branch_name)
-        puts 'Code in your branch became worse'
+        CodeclimateCi::Messages.message_for_worse_code
         exit(1)
       else
-        puts 'Code in your branch is good. Go on...'
+        CodeclimateCi::Messages.message_for_good_code
       end
-    end
-
-    def self.result_not_ready
-      puts 'Please wait. Code Climate is analyzing your branch.'
     end
 
     default_task :check

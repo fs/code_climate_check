@@ -25,7 +25,7 @@ module CodeclimateCi
         if gpa(branch_name).analyzed?
           return gpa(branch_name).gpa
         else
-          CodeclimateCi::CLI.result_not_ready
+          CodeclimateCi::Messages.result_not_ready
           sleep(2)
           gpa(branch_name).refresh!
         end
