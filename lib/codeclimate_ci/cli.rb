@@ -11,11 +11,11 @@ module CodeclimateCi
     def check
       CodeclimateCi.configuration.load_from_options(options)
 
-      if CodeclimateCi::CompareGpa.new(codeclimate_api_token, repo_id).worse?(branch_name)
-        CodeclimateCi::Messages.message_for_worse_code
+      if CompareGpa.new(codeclimate_api_token, repo_id).worse?(branch_name)
+        Messages.message_for_worse_code
         exit(1)
       else
-        CodeclimateCi::Messages.message_for_good_code
+        Messages.message_for_good_code
       end
     end
 

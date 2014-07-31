@@ -17,19 +17,11 @@ module CodeclimateCi
     private
 
     def master_gpa
-      gpa('master').gpa
+      gpa('master').analyze!
     end
 
     def branch_gpa(branch_name)
-      5.times do
-        if gpa(branch_name).analyzed?
-          return gpa(branch_name).gpa
-        else
-          CodeclimateCi::Messages.result_not_ready
-          sleep(2)
-          gpa(branch_name).refresh!
-        end
-      end
+      gpa(branch_name).analyze!
     end
 
     def api_requester
@@ -37,7 +29,7 @@ module CodeclimateCi
     end
 
     def gpa(branch_name)
-      @gpa = GetGpa.new(api_requester, branch_name)
+      GetGpa.new(api_requester, branch_name)
     end
   end
 end
