@@ -18,19 +18,5 @@ module CodeclimateCi
         expect(codeclimate_ci.worse?('master')).to be_falsey
       end
     end
-
-    context 'when branch is not analyzed' do
-      before do
-        allow_any_instance_of(GetGpa).to receive(:analyzed?).and_return(false)
-        allow(Messages).to receive(:result_not_ready)
-        allow_any_instance_of(described_class).to receive(:sleep)
-      end
-
-      it 'should inform user about result' do
-        expect(Messages).to receive(:result_not_ready).exactly(5).times
-
-        codeclimate_ci.worse?('master')
-      end
-    end
   end
 end
