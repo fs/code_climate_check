@@ -14,7 +14,7 @@ module CodeclimateCi
       end
 
       it 'should return correct gpa value' do
-        expect(codeclimate_ci.analyze!).to eq 3
+        expect(codeclimate_ci.gpa).to eq 3
       end
     end
   end
