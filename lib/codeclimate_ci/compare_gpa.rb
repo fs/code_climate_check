@@ -17,11 +17,11 @@ module CodeclimateCi
     private
 
     def master_gpa
-      gpa('master').analyze!
+      gpa('master').gpa
     end
 
     def branch_gpa(branch_name)
-      gpa(branch_name).analyze!
+      gpa(branch_name).gpa
     end
 
     def api_requester
