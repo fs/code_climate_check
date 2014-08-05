@@ -4,11 +4,11 @@ module CodeclimateCi
       puts 'Please wait. Code Climate is analyzing your branch.'
     end
 
-    def self.message_for_worse_code
+    def self.for_worse_code
       puts 'Code in your branch became worse'
     end
 
-    def self.message_for_good_code
+    def self.for_good_code
       puts 'Code in your branch is good. Go on...'
     end
   end
