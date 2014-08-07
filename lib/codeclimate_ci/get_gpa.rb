@@ -2,30 +2,40 @@ require 'timeout'
 
 module CodeclimateCi
   class GetGpa
-    RETRY_TIMEOUT = ENV['RETRY_TIMEOUT'] || 10
-    NO_BRANCH_INFO_ERROR = Class.new(Exception)
+    RETRY_COUNT = ENV['RETRY_COUNT'] || 3
+    SLEEP_TIME = ENV['SLEEP_TIME'] || 5
 
     def initialize(codeclimate_api, branch)
       @codeclimate_api, @branch = codeclimate_api, branch
     end
 
     def gpa
-      branch_info['last_snapshot']['gpa'].to_f
+      retrieve_branch_info
     end
 
     private
 
-    def branch_info
-      @branch_info ||= timeout(RETRY_TIMEOUT) { retrieve_branch_info }
+    def retrieve_branch_info
+      RETRY_COUNT.times do
+        if analyzed?
+          return last_snapshot_gpa
+        else
+          Messages.result_not_ready
+          sleep(SLEEP_TIME)
+        end
+      end
     end
 
-    def retrieve_branch_info
-      info = @codeclimate_api.branch_info(@branch)
-      fail(NO_BRANCH_INFO_ERROR) unless info.include?('last_snapshot')
+    def last_snapshot_gpa
+      branch_info['last_snapshot']['gpa'].to_f
+    end
 
-      info
-    rescue NO_BRANCH_INFO_ERROR
-      sleep(2) && retry
+    def analyzed?
+      branch_info.include?('last_snapshot')
+    end
+
+    def branch_info
+      @branch_info ||= @codeclimate_api.branch_info(@branch)
     end
   end
 end
