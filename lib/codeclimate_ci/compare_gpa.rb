@@ -1,9 +1,7 @@
-require 'codeclimate_ci/get_gpa'
-
 module CodeclimateCi
   class CompareGpa
-    def initialize(token, repo_id)
-      @token, @repo_id = token, repo_id
+    def initialize(api_requester)
+      @api_requester = api_requester
     end
 
     def diff(branch_name)
@@ -24,12 +22,8 @@ module CodeclimateCi
       gpa(branch_name).gpa
     end
 
-    def api_requester
-      @api_requester ||= ApiRequester.new(@token, @repo_id)
-    end
-
     def gpa(branch_name)
-      GetGpa.new(api_requester, branch_name)
+      GetGpa.new(@api_requester, branch_name)
     end
   end
 end

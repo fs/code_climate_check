@@ -2,24 +2,19 @@ require 'spec_helper'
 
 module CodeclimateCi
   describe CompareGpa do
-    let(:codeclimate_ci) { CodeclimateCi::CompareGpa.new('repo11', 'token1') }
+    let(:codeclimate_ci) { CodeclimateCi::CompareGpa.new(api_requester) }
+    let(:api_requester) { double(CodeclimateCi::ApiRequester) }
+    let(:configuration) { double(CodeclimateCi::Configuration, retry_count: '2', sleep_time: '1') }
+    let(:good_branch_info) { { 'last_snapshot' => { 'gpa' => 4 } } }
+    let(:bad_branch_info) { { 'last_snapshot' => { 'gpa' => 1 } } }
 
     before do
-      allow_any_instance_of(ApiRequester).to receive(:branch_info).with('master')
-        .and_return(
-          'last_snapshot' => { 'gpa' => 3 }
-        )
-
-      allow_any_instance_of(ApiRequester).to receive(:branch_info).with('another_branch')
-        .and_return(
-          'last_snapshot' => { 'gpa' => 2 }
-        )
+      allow(api_requester).to receive(:branch_info).with('master') { good_branch_info }
+      allow(api_requester).to receive(:branch_info).with('another_branch') { bad_branch_info }
     end
 
-    context 'when branch is analyzed' do
-      it 'should not be worse' do
-        expect(codeclimate_ci.worse?('another_branch')).to be_truthy
-      end
+    it 'properly defines branch with worse code quality' do
+      expect(codeclimate_ci.worse?('another_branch')).to be_truthy
     end
   end
 end

@@ -1,7 +1,6 @@
-module CodeclimateCi
-  class GetGpa
-    def initialize(codeclimate_api, branch)
-      @codeclimate_api, @branch = codeclimate_api, branch
+  class CodeclimateCi::GetGpa
+    def initialize(api_requester, branch)
+      @api_requester, @branch = api_requester, branch
     end
 
     def gpa
@@ -38,7 +37,7 @@ module CodeclimateCi
     end
 
     def branch_info
-      @branch_info ||= @codeclimate_api.branch_info(@branch)
+      @branch_info ||= @api_requester.branch_info(@branch)
     end
 
     def refresh!
