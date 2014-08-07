@@ -17,7 +17,7 @@ module CodeclimateCi
     private
 
     def value_or_default(options, option)
-    	options[option.to_s] || DEFAULTS[option.to_s]
+      options[option.to_s] || DEFAULTS[option.to_s]
     end
   end
 end

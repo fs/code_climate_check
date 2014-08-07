@@ -5,21 +5,20 @@ module CodeclimateCi
     end
 
     def gpa
-      retrieve_branch_info
+      retry_count.times do
+        return last_snapshot_gpa if analyzed?
+        wait_and_refresh!
+      end
+
+      0
     end
 
     private
 
-    def retrieve_branch_info
-      retry_count.times do
-        if analyzed?
-          return last_snapshot_gpa
-        else
-          Messages.result_not_ready
-          refresh!
-          sleep(sleep_time)
-        end
-      end
+    def wait_and_refresh!
+      Messages.result_not_ready
+      refresh!
+      sleep(sleep_time)
     end
 
     def retry_count
