@@ -3,7 +3,12 @@ require 'spec_helper'
 module CodeclimateCi
   describe GetGpa do
     let(:codeclimate_ci) { CodeclimateCi::GetGpa.new(api_requester, 'repo1') }
-    let(:api_requester) { double }
+    let(:api_requester) { double(CodeclimateCi::ApiRequester) }
+    let(:configuration) { double(CodeclimateCi::Configuration, retry_count: '3', sleep_time: '5')}
+
+    before do
+      allow(CodeclimateCi).to receive(:configuration) { configuration }
+    end
 
     context 'when task is not analyzed' do
       before do

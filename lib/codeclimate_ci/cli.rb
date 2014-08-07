@@ -5,6 +5,8 @@ module CodeclimateCi
     method_option :codeclimate_api_token, required: true
     method_option :repo_id, required: true
     method_option :branch_name, required: true
+    method_option :retry_count
+    method_option :sleep_time
 
     desc('check', 'Check code quality with CodeClimate')
 

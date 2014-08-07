@@ -1,8 +1,5 @@
 module CodeclimateCi
   class GetGpa
-    RETRY_COUNT = ENV['RETRY_COUNT'] || 3
-    SLEEP_TIME = ENV['SLEEP_TIME'] || 5
-
     def initialize(codeclimate_api, branch)
       @codeclimate_api, @branch = codeclimate_api, branch
     end
@@ -14,15 +11,23 @@ module CodeclimateCi
     private
 
     def retrieve_branch_info
-      RETRY_COUNT.times do
+      retry_count.times do
         if analyzed?
           return last_snapshot_gpa
         else
           Messages.result_not_ready
           refresh!
-          sleep(SLEEP_TIME)
+          sleep(sleep_time)
         end
       end
+    end
+
+    def retry_count
+      CodeclimateCi.configuration.retry_count.to_i
+    end
+
+    def sleep_time
+      CodeclimateCi.configuration.sleep_time.to_i
     end
 
     def last_snapshot_gpa

@@ -21,6 +21,8 @@ module CodeclimateCi
         expect(configuration.codeclimate_api_token).to eq('12345678')
         expect(configuration.repo_id).to eq('124356')
         expect(configuration.branch_name).to eq('new-feature')
+        expect(configuration.retry_count).to eq('3')
+        expect(configuration.sleep_time).to eq('5')
       end
     end
   end
