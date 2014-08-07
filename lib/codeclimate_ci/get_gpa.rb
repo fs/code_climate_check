@@ -1,5 +1,3 @@
-require 'timeout'
-
 module CodeclimateCi
   class GetGpa
     RETRY_COUNT = ENV['RETRY_COUNT'] || 3
