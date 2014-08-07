@@ -19,6 +19,7 @@ module CodeclimateCi
           return last_snapshot_gpa
         else
           Messages.result_not_ready
+          refresh!
           sleep(SLEEP_TIME)
         end
       end
@@ -34,6 +35,10 @@ module CodeclimateCi
 
     def branch_info
       @branch_info ||= @codeclimate_api.branch_info(@branch)
+    end
+
+    def refresh!
+      @branch_info = nil
     end
   end
 end
