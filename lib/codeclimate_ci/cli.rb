@@ -13,7 +13,7 @@ module CodeclimateCi
     def check
       CodeclimateCi.configuration.load_from_options(options)
 
-      if CompareGpa.new(codeclimate_api_token, repo_id).worse?(branch_name)
+      if CompareGpa.new(api_requester).worse?(branch_name)
         Messages.for_worse_code
         exit(1)
       else
@@ -25,12 +25,11 @@ module CodeclimateCi
 
     private
 
-    def codeclimate_api_token
-      CodeclimateCi.configuration.codeclimate_api_token
-    end
-
-    def repo_id
-      CodeclimateCi.configuration.repo_id
+    def api_requester
+      @api_requester ||= ApiRequester.new(
+        CodeclimateCi.configuration.codeclimate_api_token,
+        CodeclimateCi.configuration.repo_id
+      )
     end
 
     def branch_name
