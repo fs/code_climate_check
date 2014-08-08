@@ -1,4 +1,7 @@
-  class CodeclimateCi::GetGpa
+module CodeclimateCi
+  class GetGpa
+    NULL_VALUE = 0
+
     def initialize(api_requester, branch)
       @api_requester, @branch = api_requester, branch
     end
@@ -9,7 +12,7 @@
         wait_and_refresh!
       end
 
-      0
+      NULL_VALUE
     end
 
     private
