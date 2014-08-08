@@ -10,7 +10,9 @@ describe CodeclimateCi::GetGpa do
   before { allow(CodeclimateCi).to receive(:configuration) { configuration } }
 
   context 'when task is analyzed' do
-    before { allow(api_requester).to receive(:branch_info) { analyzed_branch_info } }
+    before do
+      allow(api_requester).to receive(:branch_info) { analyzed_branch_info }
+    end
 
     it 'returns correct gpa value' do
       expect(codeclimate_ci.gpa).to eq 3
@@ -18,9 +20,13 @@ describe CodeclimateCi::GetGpa do
   end
 
   context 'when task is not analyzed' do
-    let(:configuration) { double(CodeclimateCi::Configuration, retry_count: '2', sleep_time: '0') }
+    let(:configuration) do
+      double(CodeclimateCi::Configuration, retry_count: '2', sleep_time: '0')
+    end
 
-    before { allow(api_requester).to receive(:branch_info) { empty_branch_info } }
+    before do
+      allow(api_requester).to receive(:branch_info) { empty_branch_info }
+    end
 
     it 'returns correct gpa value' do
       expect(codeclimate_ci.gpa).to eq 0
@@ -28,9 +34,13 @@ describe CodeclimateCi::GetGpa do
   end
 
   context 'when task analyzed after retry' do
-    let(:configuration) { double(CodeclimateCi::Configuration, retry_count: '2', sleep_time: '0') }
+    let(:configuration) do
+      double(CodeclimateCi::Configuration, retry_count: '2', sleep_time: '0')
+    end
 
-    before { allow(api_requester).to receive(:branch_info).and_return(empty_branch_info, analyzed_branch_info) }
+    before do
+      allow(api_requester).to receive(:branch_info).and_return(empty_branch_info, analyzed_branch_info)
+    end
 
     it 'returns correct gpa value after retry' do
       expect(api_requester).to receive(:branch_info).twice
