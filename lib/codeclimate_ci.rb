@@ -1,4 +1,3 @@
-require 'pry'
 require 'codeclimate_ci/version'
 require 'codeclimate_ci/cli'
 require 'codeclimate_ci/configuration'
