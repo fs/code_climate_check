@@ -4,15 +4,15 @@ module CodeclimateCi
       @api_requester = api_requester
     end
 
-    def diff(branch_name)
-      branch_gpa(branch_name) - master_gpa
-    end
-
     def worse?(branch_name)
       diff(branch_name) < 0
     end
 
     private
+
+    def diff(branch_name)
+      branch_gpa(branch_name) - master_gpa
+    end
 
     def master_gpa
       gpa('master').gpa
