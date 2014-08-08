@@ -5,17 +5,19 @@ module CodeclimateCi
     method_option :codeclimate_api_token, required: true
     method_option :repo_id, required: true
     method_option :branch_name, required: true
+    method_option :retry_count
+    method_option :sleep_time
 
     desc('check', 'Check code quality with CodeClimate')
 
     def check
       CodeclimateCi.configuration.load_from_options(options)
 
-      if CodeclimateCi::CompareGpa.new(codeclimate_api_token, repo_id).worse?(branch_name)
-        puts 'Code in your branch became worse'
+      if CompareGpa.new(codeclimate_api_token, repo_id).worse?(branch_name)
+        Messages.for_worse_code
         exit(1)
       else
-        puts 'Code in your branch is good. Go on...'
+        Messages.for_good_code
       end
     end
 
