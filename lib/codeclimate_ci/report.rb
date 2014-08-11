@@ -1,14 +1,14 @@
 module CodeclimateCi
-  class Messages
+  class Report
     def self.result_not_ready
       puts 'Please wait. Code Climate is analyzing your branch.'
     end
 
-    def self.for_worse_code
+    def self.worse_code
       puts 'Code in your branch became worse'
     end
 
-    def self.for_good_code
+    def self.good_code
       puts 'Code in your branch is good. Go on...'
     end
   end

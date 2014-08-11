@@ -4,7 +4,7 @@ require 'codeclimate_ci/configuration'
 require 'codeclimate_ci/get_gpa'
 require 'codeclimate_ci/compare_gpa'
 require 'codeclimate_ci/api_requester'
-require 'codeclimate_ci/messages'
+require 'codeclimate_ci/report'
 
 module CodeclimateCi
   def self.configuration

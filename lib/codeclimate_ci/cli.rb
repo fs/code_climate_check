@@ -14,10 +14,10 @@ module CodeclimateCi
       CodeclimateCi.configuration.load_from_options(options)
 
       if CompareGpa.new(api_requester).worse?(branch_name)
-        Messages.for_worse_code
+        Report.worse_code
         exit(1)
       else
-        Messages.for_good_code
+        Report.good_code
       end
     end
 
