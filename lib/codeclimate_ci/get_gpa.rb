@@ -18,7 +18,7 @@ module CodeclimateCi
     private
 
     def wait_and_refresh!
-      Messages.result_not_ready
+      Report.result_not_ready
       refresh!
       sleep(sleep_time)
     end
