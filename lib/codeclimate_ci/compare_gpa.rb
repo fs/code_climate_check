@@ -8,11 +8,11 @@ module CodeclimateCi
       diff(branch_name) < 0
     end
 
-    private
-
     def diff(branch_name)
-      branch_gpa(branch_name) - master_gpa
+      @diff ||= branch_gpa(branch_name) - master_gpa
     end
+
+    private
 
     def master_gpa
       gpa('master').gpa

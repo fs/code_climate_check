@@ -7,9 +7,12 @@ module CodeclimateCi
     end
 
     def gpa
+      retry_counter = 0
+
       retry_count.times do
         return last_snapshot_gpa if analyzed?
-        wait_and_refresh!
+        retry_counter += 1
+        wait_and_refresh!(retry_counter)
       end
 
       NULL_VALUE
@@ -17,8 +20,8 @@ module CodeclimateCi
 
     private
 
-    def wait_and_refresh!
-      Report.result_not_ready
+    def wait_and_refresh!(retry_counter)
+      Report.result_not_ready(retry_counter, @branch)
       refresh!
       sleep(sleep_time)
     end
