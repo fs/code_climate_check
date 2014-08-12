@@ -1,6 +1,7 @@
 module CodeclimateCi
   class GetGpa
     NULL_VALUE = 0
+    INVALID_CREDENTIALS_EXCEPTION = Class.new(Exception)
 
     def initialize(api_requester, branch)
       @api_requester, @branch = api_requester, branch
@@ -9,13 +10,13 @@ module CodeclimateCi
     def gpa
       retry_count.times do
         return last_snapshot_gpa if analyzed?
-        fail(Exception) unless branch_info.code == 200
+        fail(INVALID_CREDENTIALS_EXCEPTION) unless branch_info.code == 200
         wait_and_refresh!
       end
 
       NULL_VALUE
 
-    rescue Exception
+    rescue INVALID_CREDENTIALS_EXCEPTION
       Report.invalid_credentials
       exit(1)
     end
