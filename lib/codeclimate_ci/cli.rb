@@ -14,10 +14,10 @@ module CodeclimateCi
       CodeclimateCi.configuration.load_from_options(options)
 
       if compare_gpa.worse?(branch_name)
-        report_about_worse_code
+        Report.worse_code(diff)
         exit(1)
       else
-        report_about_good_code
+        Report.good_code(diff)
       end
     end
 
@@ -25,12 +25,8 @@ module CodeclimateCi
 
     private
 
-    def report_about_worse_code
-      Report.worse_code(compare_gpa.diff(branch_name))
-    end
-
-    def report_about_good_code
-      Report.good_code(compare_gpa.diff(branch_name))
+    def diff
+      compare_gpa.diff(branch_name)
     end
 
     def compare_gpa
