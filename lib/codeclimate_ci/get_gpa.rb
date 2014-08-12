@@ -10,7 +10,7 @@ module CodeclimateCi
     def gpa
       retry_count.times do
         return last_snapshot_gpa if analyzed?
-        fail(INVALID_CREDENTIALS_EXCEPTION) unless branch_info.code == 200
+        fail(INVALID_CREDENTIALS_EXCEPTION) unless valid_response_code?
         wait_and_refresh!
       end
 
@@ -22,6 +22,10 @@ module CodeclimateCi
     end
 
     private
+
+    def valid_response_code?
+      branch_info.code == 200
+    end
 
     def wait_and_refresh!
       increment_retry_counter
