@@ -15,7 +15,7 @@ module CodeclimateCi
     end
 
     def connection_established?
-      self.class.get('/').code == 200
+      @connection_established ||= self.class.get('/').code == 200
     end
   end
 end

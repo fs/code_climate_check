@@ -32,6 +32,11 @@ describe CodeclimateCi::ApiRequester do
     end
 
     it 'requests correct API endpoint' do
+      api_requester.connection_established?
+      expect(WebMock).to have_requested(:get, endpoint)
+    end
+
+    it 'returns false' do
       expect(api_requester.connection_established?).to be_falsey
     end
   end
