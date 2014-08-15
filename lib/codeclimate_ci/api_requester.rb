@@ -13,5 +13,9 @@ module CodeclimateCi
     def branch_info(branch)
       self.class.get("/branches/#{branch}")
     end
+
+    def connection_established?
+      @connection_established ||= self.class.get('/').code == 200
+    end
   end
 end

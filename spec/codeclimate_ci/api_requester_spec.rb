@@ -21,4 +21,23 @@ describe CodeclimateCi::ApiRequester do
       expect(WebMock).to have_requested(:get, endpoint)
     end
   end
+
+  describe '#connection_established?' do
+    let(:endpoint) do
+      "https://codeclimate.com/api/repos/#{repo_id}/?api_token=#{token}"
+    end
+
+    before do
+      stub_request(:get, endpoint).to_return(status: 404)
+    end
+
+    it 'requests correct API endpoint' do
+      api_requester.connection_established?
+      expect(WebMock).to have_requested(:get, endpoint)
+    end
+
+    it 'returns false' do
+      expect(api_requester.connection_established?).to be_falsey
+    end
+  end
 end
