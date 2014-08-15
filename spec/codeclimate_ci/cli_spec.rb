@@ -7,13 +7,10 @@ describe CodeclimateCi::CLI do
   let(:api_requester) { double(CodeclimateCi::ApiRequester) }
   let(:compare_gpa) { double(CodeclimateCi::CompareGpa, diff: 0) }
 
-  class FakeExit < Exception
-  end
-
   def do_check
     cli.check
   rescue SystemExit => e
-    raise FakeExit, e.status
+    @exit = e.status
   end
 
   before do
@@ -28,7 +25,12 @@ describe CodeclimateCi::CLI do
 
     it 'reports invalid credentials' do
       expect(CodeclimateCi::Report).to receive(:invalid_credentials)
-      expect { do_check }.to raise_error(FakeExit).with_message('1')
+      do_check
+    end
+
+    it 'exits with 1' do
+      do_check
+      expect(@exit).to eql(1)
     end
   end
 
@@ -44,7 +46,12 @@ describe CodeclimateCi::CLI do
 
       it 'reports worse code' do
         expect(CodeclimateCi::Report).to receive(:worse_code)
-        expect { do_check }.to raise_error(FakeExit).with_message('1')
+        do_check
+      end
+
+      it 'exits with 1' do
+        do_check
+        expect(@exit).to eql(1)
       end
     end
 
@@ -55,7 +62,12 @@ describe CodeclimateCi::CLI do
 
       it 'reports good code' do
         expect(CodeclimateCi::Report).to receive(:good_code)
-        expect { do_check }.to raise_error(FakeExit).with_message('0')
+        do_check
+      end
+
+      it 'exits with 0' do
+        do_check
+        expect(@exit).to eql(0)
       end
     end
   end
