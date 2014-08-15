@@ -13,22 +13,18 @@ module CodeclimateCi
     def check
       CodeclimateCi.configuration.load_from_options(options)
 
-      bad_connection unless api_requester.connection_established?
+      exit_invalid_credentials! unless api_requester.connection_established?
 
       if compare_gpa.worse?(branch_name)
-        worse_code
+        exit_worse_code!
       else
-        good_code
+        exit_good_code!
       end
     end
 
     default_task :check
 
     private
-
-    def diff
-      compare_gpa.diff(branch_name)
-    end
 
     def compare_gpa
       @compare_gpa ||= CompareGpa.new(api_requester)
@@ -41,20 +37,25 @@ module CodeclimateCi
       )
     end
 
+    def diff
+      compare_gpa.diff(branch_name)
+    end
+
     def branch_name
       CodeclimateCi.configuration.branch_name
     end
 
-    def worse_code
+    def exit_worse_code!
       Report.worse_code(diff)
       exit(1)
     end
 
-    def good_code
+    def exit_good_code!
       Report.good_code(diff)
+      exit(0)
     end
 
-    def bad_connection
+    def exit_invalid_credentials!
       Report.invalid_credentials
       exit(1)
     end
