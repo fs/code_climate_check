@@ -1,18 +1,24 @@
 require 'spec_helper'
 
 describe CodeclimateCi::CLI do
-  let(:cli) { CodeclimateCi::CLI.new }
+  let(:args) { ['--branch_name', 'master'] }
+
+  let(:cli) { CodeclimateCi::CLI.new(args) }
   let(:api_requester) { double(CodeclimateCi::ApiRequester) }
-  let(:configuration) { double(CodeclimateCi::Configuration, retry_count: '3', sleep_time: '5') }
-  let(:compare_gpa) { double(CodeclimateCi::CompareGpa) }
+  let(:compare_gpa) { double(CodeclimateCi::CompareGpa, diff: 0) }
+
+  class FakeExit < Exception
+  end
+
+  def do_check
+    cli.check
+  rescue SystemExit => e
+    raise FakeExit, e.status
+  end
 
   before do
     allow(CodeclimateCi::ApiRequester).to receive(:new) { api_requester }
     allow(CodeclimateCi::CompareGpa).to receive(:new) { compare_gpa }
-    allow(CodeclimateCi).to receive(:configuration) { configuration }
-    allow(CodeclimateCi.configuration).to receive(:load_from_options)
-    allow(CodeclimateCi.configuration).to receive(:codeclimate_api_token)
-    allow(CodeclimateCi.configuration).to receive(:repo_id)
   end
 
   context 'when connection is not established' do
@@ -20,49 +26,36 @@ describe CodeclimateCi::CLI do
       allow(api_requester).to receive(:connection_established?) { false }
     end
 
-    it 'exites from script' do
-      -> { expect(cli.check).to raise_error SystemExit }
+    it 'reports invalid credentials' do
+      expect(CodeclimateCi::Report).to receive(:invalid_credentials)
+      expect { do_check }.to raise_error(FakeExit).with_message('1')
     end
   end
 
   context 'when connection is established' do
     before do
       allow(api_requester).to receive(:connection_established?) { true }
-      allow(compare_gpa).to receive(:diff)
-      allow(CodeclimateCi.configuration).to receive(:branch_name)
-      allow(cli).to receive(:exit)
     end
 
-    context 'when code in branch worse than master' do
+    context 'when code is worse' do
       before do
         allow(compare_gpa).to receive(:worse?) { true }
-        allow(CodeclimateCi::Report).to receive(:rounded_diff_value)
-        allow(CodeclimateCi::Report).to receive(:worse_code)
       end
 
-      it 'reports about worse code' do
+      it 'reports worse code' do
         expect(CodeclimateCi::Report).to receive(:worse_code)
-
-        cli.check
-      end
-
-      it 'exites from script' do
-        expect(cli).to receive(:exit)
-
-        cli.check
+        expect { do_check }.to raise_error(FakeExit).with_message('1')
       end
     end
 
-    context 'when code in branch worse than master' do
+    context 'when code is better' do
       before do
         allow(compare_gpa).to receive(:worse?) { false }
-        allow(CodeclimateCi::Report).to receive(:good_code)
       end
 
-      it 'reports about good code' do
+      it 'reports good code' do
         expect(CodeclimateCi::Report).to receive(:good_code)
-
-        cli.check
+        expect { do_check }.to raise_error(FakeExit).with_message('0')
       end
     end
   end
