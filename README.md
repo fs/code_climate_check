@@ -2,6 +2,7 @@
 
 [<img src="https://semaphoreapp.com/api/v1/projects/67b7f0f3-e224-43a2-afd9-b24c5176e6dd/214701/shields_badge.png">](https://semaphoreapp.com/fs/codeclimate_ci)
 [![Code Climate](https://codeclimate.com/github/fs/codeclimate_ci.png)](https://codeclimate.com/github/fs/codeclimate_ci)
+[![Test Coverage](https://codeclimate.com/github/fs/codeclimate_ci/badges/coverage.svg)](https://codeclimate.com/github/fs/codeclimate_ci)
 
 Gem that allows you to compare code quality in your branch using CodeClimate API right from your console.
 
