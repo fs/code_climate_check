@@ -4,7 +4,9 @@
 [![Code Climate](https://codeclimate.com/github/fs/codeclimate_ci.png)](https://codeclimate.com/github/fs/codeclimate_ci)
 [![Test Coverage](https://codeclimate.com/github/fs/codeclimate_ci/badges/coverage.svg)](https://codeclimate.com/github/fs/codeclimate_ci)
 
-Gem that allows you to compare code quality in your branch using CodeClimate API right from your console.
+The main idea of the Code Climate CI gem is that you can implement it to your ci script. Gem will compare code quality in current branch with master branch through CodeClimate API and if code in your branch become worse then ci script will be interrupted.
+
+You can also compare code quality in your branch using this gem right from your console.
 
 ## Installation
 
@@ -68,7 +70,7 @@ Just type in your console:
 
 ## Credits
 
-CodeClimate CI is maintained by [Timur Vafin](http://github.com/timurvafin) and [Ildar Safin](http://github.com/ildarsafin).
+Code Climate CI is maintained by [Ildar Safin](http://github.com/ildarsafin).
 It was written by [Flatstack](http://www.flatstack.com) with the help of our
 [contributors](http://github.com/fs/codeclimate_ci/contributors).
 

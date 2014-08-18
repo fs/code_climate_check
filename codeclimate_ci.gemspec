@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.version       = CodeclimateCi::VERSION
   spec.authors       = ['FlatStack team']
   spec.summary       = %q{Simple gem for checking your code with CodeClimate}
-  spec.description   = %q{ Gem that allows You to check your code quality with CodeClimate right from your terminal }
+  spec.description   = %q{ Gem that allows You to check your code quality with CodeClimate and integrate it with your CI scripts }
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
