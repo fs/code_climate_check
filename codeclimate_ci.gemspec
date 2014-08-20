@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Simple gem for checking your code with CodeClimate}
   spec.description   = %q{ Gem that allows You to check your code quality with CodeClimate and integrate it with your CI scripts }
   spec.license       = 'MIT'
+  spec.homepage    = 'https://github.com/fs/codeclimate_ci'
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = ['codeclimate_ci']
