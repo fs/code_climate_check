@@ -18,9 +18,9 @@ module CodeclimateCi
     private
 
     def wait_and_refresh!
+      increment_retry_counter
       Report.result_not_ready(@retry_counter, @branch)
 
-      increment_retry_counter
       sleep(sleep_time)
       refresh!
     end
