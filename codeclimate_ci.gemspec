@@ -6,9 +6,8 @@ Gem::Specification.new do |spec|
   spec.version       = CodeclimateCi::VERSION
   spec.authors       = ['FlatStack team']
   spec.summary       = %q{Simple gem for checking your code with CodeClimate}
-  spec.description   = %q{ Gem that allows You to check your code quality with CodeClimate right from your terminal }
+  spec.description   = %q{ Gem that allows You to check your code quality with CodeClimate and integrate it with your CI scripts }
   spec.license       = 'MIT'
-  spec.homepage    = 'https://github.com/fs/codeclimate_ci'
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = ['codeclimate_ci']
@@ -17,13 +16,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
-
   spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'guard'
-  spec.add_development_dependency 'guard-rspec'
   spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'pry-remote'
-  spec.add_development_dependency 'pry-nav'
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'webmock'
 
