@@ -14,43 +14,50 @@ You can also compare code quality in your branch using this gem right from your 
 
 Add this line to your application's Gemfile:
 
-    $ gem 'codeclimate_ci'
+```bash
+gem 'codeclimate_ci'
+```
 
 And then execute:
 
-    $ bundle
+```bash
+bundle
+```
 
 Or install it yourself as:
 
-    $ gem install codeclimate_ci
-
-If you cloned this project use:
-
-    $ bin/bootstrap
+```bash
+gem install codeclimate_ci
+```
 
 ## Usage
 
 Just type in your console:
 
 ```shell
-  $ codeclimate_ci --codeclimate-api-token CODECLIMATE_API_TOKEN --repo-id REPOSITORY_ID --branch_name BRANCH
+codeclimate_ci --codeclimate-api-token CODECLIMATE_API_TOKEN --repo-id REPOSITORY_ID --branch_name BRANCH
 ```
 
   * For codeclimate api token you need to go to codeclimate account settings in `Integrations` tab and there you can see `API Token`.
   * For repo id you need to go to your private repo and then you'll see it in you address string.
 
 ## Response examples
-  * If you entered wrong api-token or repo-id response will be:
+
+### If you entered wrong api-token or repo-id response will be:
+
 ```shell
-  $ Invalid credentials given. Please check your codeclimate_api_token and repo_id.
+Invalid credentials given. Please check your codeclimate_api_token and repo_id.
 ```
-  * If GPA in your branch became worse than in master response will be:
+
+### If GPA in your branch became worse than in master response will be:
+
 ```shell
-  $ Code in your branch became worse on %diff_point% points
+Code in your branch became worse on %diff_point% points
 ```
-  * If GPA in your branch became better than in master response will be:
+### If GPA in your branch became better than in master response will be:
+
 ```shell
-  $ Gpa score has improved to %diff_point% points. Go on...
+Gpa score has improved to %diff_point% points. Go on...
 ```
 
 ## Quality tools
@@ -60,7 +67,8 @@ Just type in your console:
 
 ## Development
 
-`bin/build` checks your specs and runs quality tools
+* `bin/bootstrap` install gems
+* `bin/build` check your specs and runs quality tools
 
 ## Contributing
 
