@@ -3,6 +3,7 @@
 [<img src="https://semaphoreapp.com/api/v1/projects/67b7f0f3-e224-43a2-afd9-b24c5176e6dd/214701/shields_badge.png">](https://semaphoreapp.com/fs/codeclimate_ci)
 [![Code Climate](https://codeclimate.com/github/fs/codeclimate_ci.png)](https://codeclimate.com/github/fs/codeclimate_ci)
 [![Test Coverage](https://codeclimate.com/github/fs/codeclimate_ci/badges/coverage.svg)](https://codeclimate.com/github/fs/codeclimate_ci)
+[![Gem Version](https://badge.fury.io/rb/codeclimate_ci.svg)](http://badge.fury.io/rb/codeclimate_ci)
 
 The main idea of the Code Climate CI gem is that you can implement it to your [CI script](https://github.com/fs/rails-base/blob/master/bin/ci).
 
