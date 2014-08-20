@@ -4,7 +4,9 @@
 [![Code Climate](https://codeclimate.com/github/fs/codeclimate_ci.png)](https://codeclimate.com/github/fs/codeclimate_ci)
 [![Test Coverage](https://codeclimate.com/github/fs/codeclimate_ci/badges/coverage.svg)](https://codeclimate.com/github/fs/codeclimate_ci)
 
-The main idea of the Code Climate CI gem is that you can implement it to your [CI script](https://github.com/fs/rails-base/blob/master/bin/ci). Gem will compare code quality in current branch with master branch through CodeClimate API and if code in your branch become worse then ci script will be interrupted.
+The main idea of the Code Climate CI gem is that you can implement it to your [CI script](https://github.com/fs/rails-base/blob/master/bin/ci).
+
+Gem will compare code quality in current branch with master branch through [CodeClimate API](https://codeclimate.com/docs/api) and if code in your branch become worse then ci script will be interrupted.
 
 You can also compare code quality in your branch using this gem right from your console.
 
