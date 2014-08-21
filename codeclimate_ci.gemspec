@@ -4,7 +4,7 @@ require File.expand_path('../lib/codeclimate_ci/version', __FILE__)
 Gem::Specification.new do |spec|
   spec.name          = 'codeclimate_ci'
   spec.version       = CodeclimateCi::VERSION
-  spec.authors       = ['FlatStack team']
+  spec.authors       = ['Ildar Safin', 'Timur Vafin']
   spec.summary       = %q{Simple gem for checking your code with CodeClimate}
   spec.description   = %q{ Gem that allows You to check your code quality with CodeClimate and integrate it with your CI scripts }
   spec.license       = 'MIT'
