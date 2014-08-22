@@ -18,6 +18,10 @@ module CodeclimateCi
       puts 'Invalid credentials given. Please check your codeclimate_api_token and repo_id.'
     end
 
+    def url_to_branch_with_worse_code(repo_id, branch_name)
+      puts "https://codeclimate.com/repos/#{repo_id}/compare/#{branch_name}"
+    end
+
     def rounded_diff_value(gpa_diff)
       gpa_diff.abs.round(2)
     end

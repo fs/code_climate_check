@@ -49,6 +49,11 @@ describe CodeclimateCi::CLI do
         do_check
       end
 
+      it 'reports url to branch with worse code' do
+        expect(CodeclimateCi::Report).to receive(:url_to_branch_with_worse_code)
+        do_check
+      end
+
       it 'exits with 1' do
         do_check
         expect(@exit).to eql(1)
