@@ -47,7 +47,7 @@ module CodeclimateCi
 
     def exit_worse_code!
       Report.worse_code(diff)
-      Report.url_to_branch_with_worse_code(CodeclimateCi.configuration.repo_id, branch_name)
+      Report.url_to_branch(branch_name)
       exit(1)
     end
 

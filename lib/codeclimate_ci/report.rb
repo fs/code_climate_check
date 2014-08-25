@@ -18,7 +18,9 @@ module CodeclimateCi
       puts 'Invalid credentials given. Please check your codeclimate_api_token and repo_id.'
     end
 
-    def url_to_branch_with_worse_code(repo_id, branch_name)
+    def url_to_branch(branch_name)
+      repo_id = CodeclimateCi.configuration.repo_id
+
       puts "https://codeclimate.com/repos/#{repo_id}/compare/#{branch_name}"
     end
 

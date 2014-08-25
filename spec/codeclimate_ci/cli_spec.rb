@@ -50,7 +50,7 @@ describe CodeclimateCi::CLI do
       end
 
       it 'reports url to branch with worse code' do
-        expect(CodeclimateCi::Report).to receive(:url_to_branch_with_worse_code)
+        expect(CodeclimateCi::Report).to receive(:url_to_branch)
         do_check
       end
 
