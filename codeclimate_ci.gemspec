@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry', '~> 0.10'
   spec.add_development_dependency 'rubocop', '~> 0.25'
   spec.add_development_dependency 'webmock', '~> 1.18'
+  spec.add_development_dependency 'git', '~> 1.2'
 
   spec.add_dependency 'thor', '~> 0.19'
   spec.add_dependency 'httparty', '~>  0.13'
