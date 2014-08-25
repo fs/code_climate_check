@@ -15,11 +15,15 @@ module CodeclimateCi
       NULL_VALUE
     end
 
+    def self.null_value
+      NULL_VALUE
+    end
+
     private
 
     def wait_and_refresh!
       increment_retry_counter
-      Report.result_not_ready(@retry_counter, @branch)
+      Report.result_not_ready(@retry_counter)
 
       sleep(sleep_time)
       refresh!

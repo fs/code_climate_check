@@ -37,6 +37,23 @@ describe CodeclimateCi::CLI do
   context 'when connection is established' do
     before do
       allow(api_requester).to receive(:connection_established?) { true }
+      allow(compare_gpa).to receive(:branch_gpa_is_nil?) { false }
+    end
+
+    context 'when branch not found' do
+      before do
+        allow(compare_gpa).to receive(:branch_gpa_is_nil?) { true }
+      end
+
+      it 'reports invalid credentials' do
+        expect(CodeclimateCi::Report).to receive(:branch_not_found)
+        do_check
+      end
+
+      it 'exits with 1' do
+        do_check
+        expect(@exit).to eql(1)
+      end
     end
 
     context 'when code is worse' do

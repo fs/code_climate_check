@@ -12,6 +12,10 @@ module CodeclimateCi
       branch_gpa(branch_name) - master_gpa
     end
 
+    def branch_gpa_is_nil?(branch_name)
+      branch_gpa(branch_name).equal? GetGpa.null_value
+    end
+
     private
 
     def master_gpa
