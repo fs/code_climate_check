@@ -40,6 +40,7 @@ describe CodeclimateCi::Configuration do
         allow(Git).to receive(:open) { git_object }
 
         allow(git_object).to receive(:current_branch) { 'new-feature-branch' }
+        allow(ENV).to receive(:[]).with('BRANCH_NAME')
 
         configuration.load_from_options(options)
       end
