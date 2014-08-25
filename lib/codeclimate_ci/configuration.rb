@@ -16,24 +16,14 @@ module CodeclimateCi
       end
     end
 
+    def branch_name
+      @branch_name ||= ENV['BRANCH_NAME'] || Git.open(Dir.pwd).current_branch
+    end
+
     private
 
     def value_or_default(options, option)
-      options[option.to_s] || default_values(option)
-    end
-
-    def default_values(option)
-      DEFAULTS[option.to_s] || fetch_branch_from_env || fetch_branch_from_git
-    end
-
-    def fetch_branch_from_git
-      git = Git.open('.')
-
-      git.current_branch
-    end
-
-    def fetch_branch_from_env
-      ENV['BRANCH_NAME']
+      options[option.to_s] || DEFAULTS[option.to_s]
     end
   end
 end
