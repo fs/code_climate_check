@@ -1,5 +1,3 @@
-require 'git'
-
 module CodeclimateCi
   class Configuration
     OPTIONS = %i(codeclimate_api_token repo_id branch_name retry_count sleep_time)
@@ -17,13 +15,17 @@ module CodeclimateCi
     end
 
     def branch_name
-      @branch_name ||= ENV['BRANCH_NAME'] || Git.open(Dir.pwd).current_branch
+      @branch_name ||= ENV['BRANCH_NAME'] || current_git_branch
     end
 
     private
 
     def value_or_default(options, option)
       options[option.to_s] || DEFAULTS[option.to_s]
+    end
+
+    def current_git_branch
+      @branch ||= `git rev-parse --abbrev-ref HEAD`.chomp
     end
   end
 end
