@@ -37,12 +37,12 @@ describe CodeclimateCi::CLI do
   context 'when connection is established' do
     before do
       allow(api_requester).to receive(:connection_established?) { true }
-      allow(compare_gpa).to receive(:branch_gpa_is_nil?) { false }
+      allow(compare_gpa).to receive(:branch_not_found?) { false }
     end
 
     context 'when branch not found' do
       before do
-        allow(compare_gpa).to receive(:branch_gpa_is_nil?) { true }
+        allow(compare_gpa).to receive(:branch_not_found?) { true }
       end
 
       it 'reports invalid credentials' do
