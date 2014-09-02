@@ -15,10 +15,6 @@ module CodeclimateCi
       NULL_VALUE
     end
 
-    def self.null_value
-      NULL_VALUE
-    end
-
     private
 
     def wait_and_refresh!

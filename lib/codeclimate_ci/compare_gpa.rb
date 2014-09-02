@@ -13,7 +13,7 @@ module CodeclimateCi
     end
 
     def branch_gpa_is_nil?(branch_name)
-      branch_gpa(branch_name).equal? GetGpa.null_value
+      branch_gpa(branch_name).equal? GetGpa::NULL_VALUE
     end
 
     private
