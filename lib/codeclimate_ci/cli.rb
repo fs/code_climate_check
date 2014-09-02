@@ -47,7 +47,6 @@ module CodeclimateCi
 
     def exit_worse_code!
       Report.worse_code(diff)
-      Report.url_to_branch(branch_name)
       exit(1)
     end
 

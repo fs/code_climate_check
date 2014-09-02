@@ -8,6 +8,8 @@ module CodeclimateCi
 
     def worse_code(gpa_diff)
       puts "Code in your branch became worse on #{rounded_diff_value(gpa_diff)} points"
+
+      url_to_branch
     end
 
     def good_code(gpa_diff)
@@ -18,8 +20,9 @@ module CodeclimateCi
       puts 'Invalid credentials given. Please check your codeclimate_api_token and repo_id.'
     end
 
-    def url_to_branch(branch_name)
+    def url_to_branch
       repo_id = CodeclimateCi.configuration.repo_id
+      branch_name = CodeclimateCi.configuration.branch_name
 
       puts "https://codeclimate.com/repos/#{repo_id}/compare/#{branch_name}"
     end
