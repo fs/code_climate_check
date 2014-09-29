@@ -15,6 +15,10 @@ module CodeclimateCi
       NULL_VALUE
     end
 
+    def not_found?
+      gpa == NULL_VALUE
+    end
+
     private
 
     def wait_and_refresh!

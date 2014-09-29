@@ -14,7 +14,7 @@ module CodeclimateCi
       CodeclimateCi.configuration.load_from_options(options)
 
       exit_invalid_credentials! unless api_requester.connection_established?
-      exit_branch_not_found! if compare_gpa.branch_not_found?(branch_name)
+      exit_branch_not_found! if branch_gpa.not_found?
 
       if compare_gpa.worse?(branch_name)
         exit_worse_code!
@@ -26,6 +26,10 @@ module CodeclimateCi
     default_task :check
 
     private
+
+    def branch_gpa
+      GetGpa.new(api_requester, branch_name)
+    end
 
     def exit_branch_not_found!
       Report.branch_not_found(branch_name)
