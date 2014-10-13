@@ -2,8 +2,12 @@ module CodeclimateCi
   module Report
     module_function
 
-    def result_not_ready(retry_count, branch)
-      puts "Retry #{retry_count}. #{branch} branch analyze is not ready or branch does not exist"
+    def result_not_ready(retry_count)
+      puts "Failed to get GPA score from server. Retry #{retry_count}."
+    end
+
+    def branch_not_found(branch_name)
+      puts "Oops. #{branch_name} branch analyze is not ready or branch does not exist"
     end
 
     def worse_code(gpa_diff)

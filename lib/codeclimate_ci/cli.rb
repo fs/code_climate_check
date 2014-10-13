@@ -13,7 +13,10 @@ module CodeclimateCi
     def check
       CodeclimateCi.configuration.load_from_options(options)
 
-      exit_invalid_credentials! unless api_requester.connection_established?
+      ExceptionsCheck.new(
+        api_requester: api_requester,
+        branch_name: branch_name
+      ).perform
 
       if compare_gpa.worse?(branch_name)
         exit_worse_code!
@@ -53,11 +56,6 @@ module CodeclimateCi
     def exit_good_code!
       Report.good_code(diff)
       exit(0)
-    end
-
-    def exit_invalid_credentials!
-      Report.invalid_credentials
-      exit(1)
     end
   end
 end
