@@ -3,8 +3,9 @@ require 'spec_helper'
 describe CodeclimateCi::CLI do
   let(:args) { ['--branch_name', 'master'] }
 
-  let(:cli) { CodeclimateCi::CLI.new(args) }
+  let(:cli) { described_class.new(args) }
   let(:api_requester) { double(CodeclimateCi::ApiRequester) }
+  let(:get_gpa) { double(CodeclimateCi::GetGpa, api_requester: api_requester) }
   let(:compare_gpa) { double(CodeclimateCi::CompareGpa, diff: 0) }
 
   def do_check
@@ -16,6 +17,7 @@ describe CodeclimateCi::CLI do
   before do
     allow(CodeclimateCi::ApiRequester).to receive(:new) { api_requester }
     allow(CodeclimateCi::CompareGpa).to receive(:new) { compare_gpa }
+    allow(CodeclimateCi::GetGpa).to receive(:new) { get_gpa }
   end
 
   context 'when connection is not established' do
@@ -37,6 +39,23 @@ describe CodeclimateCi::CLI do
   context 'when connection is established' do
     before do
       allow(api_requester).to receive(:connection_established?) { true }
+      allow(get_gpa).to receive(:not_found?) { false }
+    end
+
+    context 'when branch not found' do
+      before do
+        allow(get_gpa).to receive(:not_found?) { true }
+      end
+
+      it 'reports invalid credentials' do
+        expect(CodeclimateCi::Report).to receive(:branch_not_found)
+        do_check
+      end
+
+      it 'exits with 1' do
+        do_check
+        expect(@exit).to eql(1)
+      end
     end
 
     context 'when code is worse' do

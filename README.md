@@ -86,4 +86,4 @@ It was written by [Flatstack](http://www.flatstack.com) with the help of our
 [contributors](http://github.com/fs/codeclimate_ci/contributors).
 
 
-[![Flatstack](http://www.flatstack.com/assets/images/logo.png)](http://www.flatstack.com)
+[![Flatstack](https://avatars0.githubusercontent.com/u/15136?v=2&s=200)](http://www.flatstack.com)
