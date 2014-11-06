@@ -11,11 +11,12 @@ module CodeclimateCi
     end
 
     def worse_code(gpa_diff)
-      puts "Code in your branch became worse on #{rounded_diff_value(gpa_diff)} points"
+      puts "Code in your branch became worse on #{rounded_diff_value(gpa_diff)} points."
+      puts "https://codeclimate.com/repos/#{configuration.repo_id}/compare/#{configuration.branch_name}"
     end
 
     def good_code(gpa_diff)
-      puts "Gpa score has improved to #{rounded_diff_value(gpa_diff)} points. Go on..."
+      puts "Gpa score has improved to #{rounded_diff_value(gpa_diff)} points."
     end
 
     def invalid_credentials
@@ -24,6 +25,10 @@ module CodeclimateCi
 
     def rounded_diff_value(gpa_diff)
       gpa_diff.abs.round(2)
+    end
+
+    def configuration
+      CodeclimateCi.configuration
     end
   end
 end
